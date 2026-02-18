@@ -45,12 +45,12 @@ body{
 }
 
 /* make it smaller on phones */
-@media (max-width:600px){
+@media (max-width:400px){
     #question h1{
         font-size:32px;
     }
     #result h1{
-        font-size:20px;
+        font-size:12px;
     }
 }
 
