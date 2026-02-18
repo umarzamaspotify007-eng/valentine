@@ -1,3 +1,4 @@
+/* BACKGROUND SLIDESHOW */
 const images = [
 "bg1.jpeg","bg2.jpeg","bg3.jpeg","bg4.jpeg","bg5.jpeg",
 "bg6.jpeg","bg7.jpeg","bg8.jpeg","bg9.jpeg","bg10.jpeg"
@@ -15,6 +16,8 @@ function changeBackground(){
 setInterval(changeBackground,3000);
 changeBackground();
 
+
+/* FLOATING HEARTS */
 function createHeart(){
     const heart=document.createElement("div");
     heart.className="heart";
@@ -26,21 +29,42 @@ function createHeart(){
 }
 setInterval(createHeart,300);
 
+
+/* NO BUTTON (stays near YES button) */
 const noBtn=document.getElementById("no");
-if(noBtn){
+const yesBtn=document.getElementById("yes");
+
+if(noBtn && yesBtn){
     noBtn.addEventListener("mouseover",()=>{
-        const x=Math.random()*(window.innerWidth-100);
-        const y=Math.random()*(window.innerHeight-50);
-        noBtn.style.position="absolute";
-        noBtn.style.left=x+"px";
-        noBtn.style.top=y+"px";
+
+        const yesRect = yesBtn.getBoundingClientRect();
+
+        const range = 130;
+
+        const offsetX = (Math.random()*range*2)-range;
+        const offsetY = (Math.random()*range*2)-range;
+
+        let newX = yesRect.left + offsetX;
+        let newY = yesRect.top + offsetY;
+
+        newX = Math.max(10, Math.min(window.innerWidth-120, newX));
+        newY = Math.max(10, Math.min(window.innerHeight-60, newY));
+
+        noBtn.style.position="fixed";
+        noBtn.style.left=newX+"px";
+        noBtn.style.top=newY+"px";
     });
 }
 
-const yesBtn=document.getElementById("yes");
+
+/* YES BUTTON RESULT */
+const result=document.getElementById("result");
+const question=document.getElementById("question");
+
 if(yesBtn){
     yesBtn.onclick=()=>{
-        document.getElementById("question").style.display="none";
-        document.getElementById("result").style.display="block";
+        question.style.display="none";
+        result.style.display="block";
     };
 }
+
