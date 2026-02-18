@@ -8,7 +8,7 @@ body{
     color:white;
 }
 
-/* BACKGROUND IMAGE (fixed zoom issue) */
+/* BACKGROUND IMAGE (no zoom / no crop) */
 #background{
     position:fixed;
     width:100%;
@@ -32,9 +32,26 @@ body{
     transform:translate(-50%,-50%);
 }
 
-h1{
+/* MAIN QUESTION TITLE (big) */
+#question h1{
     font-size:40px;
     text-shadow:0 0 15px black;
+}
+
+/* FINAL MESSAGE (smaller) */
+#result h1{
+    font-size:26px;
+    text-shadow:0 0 12px black;
+}
+
+/* make it smaller on phones */
+@media (max-width:600px){
+    #question h1{
+        font-size:32px;
+    }
+    #result h1{
+        font-size:20px;
+    }
 }
 
 /* BUTTONS */
@@ -73,6 +90,7 @@ button{
 
 #result img{
     width:280px;
+    max-width:80vw;
     border-radius:20px;
     margin-top:20px;
     box-shadow:0 0 25px pink;
@@ -89,4 +107,3 @@ button{
     0%{transform:translateY(100vh);}
     100%{transform:translateY(-10vh);}
 }
-
